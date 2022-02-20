@@ -22,7 +22,10 @@ export class Game extends React.Component {
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
-      console.log('history', 1)
+      console.log('stepNumber', this.state.stepNumber)
+      console.log('history', history)
+      console.log('current', current)
+      console.log('squares', squares)
       if (calculateWinner(squares) || squares[i]) {
         return;
       }
@@ -37,13 +40,15 @@ export class Game extends React.Component {
         xIsNext: !this.state.xIsNext
       });
     }
-  
+    console.log(this.state.history)
     jumpTo(step) {
       this.setState({
         stepNumber: step,
         xIsNext: (step % 2) === 0
       });
     }
+
+   
   
     render() {
       const history = this.state.history;
